@@ -1,0 +1,9 @@
+CREATE TABLE resposta(
+    id VARCHAR(255) NOT NULL PRIMARY KEY,
+    resposta VARCHAR(255) NOT NULL,
+    chamado_id VARCHAR(255) NOT NULL,
+    usuario_id VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT resposta_chamado_id_fkey FOREIGN KEY(chamado_id) REFERENCES chamado(id) ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT resposta_usuario_id_fkey FOREIGN KEY(usuario_id) REFERENCES usuario(id) ON DELETE RESTRICT ON UPDATE CASCADE
+);
