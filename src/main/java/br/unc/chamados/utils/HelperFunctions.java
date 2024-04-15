@@ -1,6 +1,6 @@
 package br.unc.chamados.utils;
 public class HelperFunctions {
-    public Boolean validateEmailDomain(String email) throws RuntimeException{
+    public boolean validateEmailDomain(String email) throws RuntimeException{
         // Split the email address at the "@" character
         String[] parts = email.split("@");
 

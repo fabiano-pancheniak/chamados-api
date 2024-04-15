@@ -26,6 +26,7 @@ public class UsuarioService {
         newUser.setCampus(userDTO.campus());
         newUser.setSetor(userDTO.setor());
         newUser.setEmail(userDTO.email());
+        newUser.setRole(userDTO.role());
         newUser.setEmailConfirmed(false);
 
         this.userRepository.save(newUser);

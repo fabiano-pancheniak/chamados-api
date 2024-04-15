@@ -4,6 +4,7 @@ import br.unc.chamados.domain.usuario.Usuario;
 import br.unc.chamados.dto.usuario.UserRequestDTO;
 import br.unc.chamados.services.UsuarioService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UsuarioController {
     private final UsuarioService userService;
+
 
     @GetMapping
     ResponseEntity<List<Usuario>> getUsers(){

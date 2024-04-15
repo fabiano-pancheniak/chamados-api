@@ -31,6 +31,7 @@ public class Usuario {
     private String email;
     @Column(name = "email_confirmed")
     private Boolean emailConfirmed;
+    private String role;
     private String campus;
     private String setor;
 

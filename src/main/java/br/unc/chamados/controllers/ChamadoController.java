@@ -10,12 +10,24 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/chamado")
 @RequiredArgsConstructor
 public class ChamadoController {
     private final ChamadoService chamadoService;
     private final UsuarioRepository userRepository;
+
+    @GetMapping
+    public List<Chamado> getChamados(){
+        return this.chamadoService.getChamados();
+    }
+
+    @GetMapping("/{atendenteId}")
+    public List<Chamado> getChamadoByAtendenteId(@PathVariable String atendenteId){
+        return this.chamadoService.getChamadosByAtendenteId(atendenteId);
+    }
 
     @PostMapping
     public ResponseEntity<Chamado> createChamado(@RequestBody ChamadoRequestDTO body){

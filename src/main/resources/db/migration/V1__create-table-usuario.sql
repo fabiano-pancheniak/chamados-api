@@ -4,6 +4,7 @@ CREATE TABLE usuario(
     password VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     nome VARCHAR(255) NOT NULL,
+    role VARCHAR(255) NOT NULL,
     campus VARCHAR(255),
     setor VARCHAR(255),
     email_confirmed BOOLEAN DEFAULT false,

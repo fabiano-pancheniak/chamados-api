@@ -7,6 +7,8 @@ public record UserRequestDTO(
         String campus,
         String setor,
         String email,
-        Boolean emailConfirmed
+        Boolean emailConfirmed,
+        String role
 ) {
+
 }

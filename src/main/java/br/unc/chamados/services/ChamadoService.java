@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -16,6 +17,7 @@ public class ChamadoService {
 
     private final ChamadoRepository chamadoRepository;
     private final UsuarioRepository usuarioRepository;
+
     public Chamado createChamado(ChamadoRequestDTO chamadoRequestDTO, Usuario user){
         Chamado newChamado = new Chamado();
 
@@ -47,5 +49,15 @@ public class ChamadoService {
         this.chamadoRepository.save(chamado);
 
         return chamado;
+    }
+
+    public List<Chamado> getChamados(){
+        List<Chamado> chamados = chamadoRepository.findAll();
+        return chamados;
+    }
+
+    public List<Chamado> getChamadosByAtendenteId(String atendenteId){
+        List<Chamado> chamados = chamadoRepository.findByAtendenteId(atendenteId);
+        return chamados;
     }
 }
