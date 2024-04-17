@@ -1,5 +1,7 @@
 package br.unc.chamados.dto.usuario;
 
+import br.unc.chamados.domain.usuario.UserRole;
+
 public record UserRequestDTO(
         String login,
         String password,
@@ -8,7 +10,8 @@ public record UserRequestDTO(
         String setor,
         String email,
         Boolean emailConfirmed,
-        String role
+        UserRole role,
+        String cpf
 ) {
 
 }

@@ -7,12 +7,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/user")
 @RequiredArgsConstructor
 public class UsuarioController {
     private final UsuarioService userService;
@@ -22,6 +24,12 @@ public class UsuarioController {
     ResponseEntity<List<Usuario>> getUsers(){
         List<Usuario> users = this.userService.getAllUsers();
         return ResponseEntity.status(HttpStatus.OK).body(users);
+    }
+
+    @GetMapping("/{login}")
+    ResponseEntity<UserDetails> getUser(@PathVariable String login){
+        UserDetails user = this.userService.getUser(login);
+        return ResponseEntity.status(HttpStatus.OK).body(user);
     }
 
     @PostMapping

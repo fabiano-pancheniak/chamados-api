@@ -4,6 +4,7 @@ import br.unc.chamados.domain.usuario.Usuario;
 import br.unc.chamados.dto.usuario.UserRequestDTO;
 import br.unc.chamados.repositories.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +19,10 @@ public class UsuarioService {
         return this.userRepository.findAll();
     }
 
+    public UserDetails getUser(String login){
+        return this.userRepository.findByLogin(login);
+    }
+
     public Usuario createUser(UserRequestDTO userDTO){
         Usuario newUser = new Usuario();
         newUser.setLogin(userDTO.login());
@@ -27,6 +32,7 @@ public class UsuarioService {
         newUser.setSetor(userDTO.setor());
         newUser.setEmail(userDTO.email());
         newUser.setRole(userDTO.role());
+        newUser.setCpf(userDTO.cpf());
         newUser.setEmailConfirmed(false);
 
         this.userRepository.save(newUser);

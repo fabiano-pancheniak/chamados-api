@@ -7,5 +7,6 @@ CREATE TABLE usuario(
     role VARCHAR(255) NOT NULL,
     campus VARCHAR(255),
     setor VARCHAR(255),
+    cpf VARCHAR(255) UNIQUE,
     email_confirmed BOOLEAN DEFAULT false,
 );
