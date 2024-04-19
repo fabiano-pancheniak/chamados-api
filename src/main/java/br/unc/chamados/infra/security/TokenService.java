@@ -1,5 +1,6 @@
 package br.unc.chamados.infra.security;
 
+import br.unc.chamados.domain.usuario.UserRole;
 import br.unc.chamados.domain.usuario.Usuario;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;

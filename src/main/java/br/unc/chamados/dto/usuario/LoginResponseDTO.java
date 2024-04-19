@@ -1,4 +1,6 @@
 package br.unc.chamados.dto.usuario;
 
-public record LoginResponseDTO(String token) {
+import br.unc.chamados.domain.usuario.UserRole;
+
+public record LoginResponseDTO(String token, UserRole userRole) {
 }
