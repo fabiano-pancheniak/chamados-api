@@ -38,8 +38,8 @@ public class AuthenticationController {
             var usernamePassword = new UsernamePasswordAuthenticationToken(data.login(), data.password());
             var auth = this.authenticationManager.authenticate(usernamePassword);
             var token = tokenService.generateToken((Usuario) auth.getPrincipal());
-            var userRole = usuarioRepository.findByLogin(data.login());
-            return ResponseEntity.ok(new LoginResponseDTO(token, userRole.getRole()));
+            var user = usuarioRepository.findByLogin(data.login());
+            return ResponseEntity.ok(new LoginResponseDTO(token, user.getRole(), user.getId()));
         } catch (BadCredentialsException e) {
             // Handle authentication failure (invalid username or password)
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");

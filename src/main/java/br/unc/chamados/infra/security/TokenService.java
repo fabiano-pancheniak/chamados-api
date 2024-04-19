@@ -22,7 +22,7 @@ public class TokenService {
             Algorithm algorithm = Algorithm.HMAC256(secret);
             String token = JWT.create()
                     .withIssuer("chamados-api")
-                    .withSubject(usuario.getLogin())
+                    .withSubject(usuario.getId())
                     .withExpiresAt(genExpirationDate())
                     .sign(algorithm);
 

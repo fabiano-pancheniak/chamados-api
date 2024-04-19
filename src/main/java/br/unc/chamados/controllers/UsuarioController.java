@@ -1,6 +1,7 @@
 package br.unc.chamados.controllers;
 
 import br.unc.chamados.domain.usuario.Usuario;
+import br.unc.chamados.dto.usuario.UserIdResponseDTO;
 import br.unc.chamados.dto.usuario.UserRequestDTO;
 import br.unc.chamados.services.UsuarioService;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +32,13 @@ public class UsuarioController {
         UserDetails user = this.userService.getUser(login);
         return ResponseEntity.status(HttpStatus.OK).body(user);
     }
+
+    @GetMapping("/userid/{login}")
+    ResponseEntity<UserIdResponseDTO> getUserId(@PathVariable String login){
+        String userId = this.userService.getUserId(login);
+        return ResponseEntity.status(HttpStatus.OK).body(new UserIdResponseDTO(userId));
+    }
+
 
     @PostMapping
     ResponseEntity<Usuario> createUser(@RequestBody UserRequestDTO body){

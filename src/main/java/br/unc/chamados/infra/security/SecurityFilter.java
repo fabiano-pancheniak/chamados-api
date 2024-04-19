@@ -1,5 +1,6 @@
 package br.unc.chamados.infra.security;
 
+import br.unc.chamados.domain.usuario.Usuario;
 import br.unc.chamados.repositories.UsuarioRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.Optional;
 
 @Component
 public class SecurityFilter extends OncePerRequestFilter {
@@ -27,7 +29,8 @@ public class SecurityFilter extends OncePerRequestFilter {
         var token = this.recoverToken(request);
         if(token != null){
             var login = tokenService.validateToken(token);
-            UserDetails user = usuarioRepository.findByLogin(login);
+            System.out.println(login);
+            Usuario user = usuarioRepository.findById(login).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
 
             var authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(authentication);

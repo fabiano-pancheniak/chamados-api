@@ -1,6 +1,7 @@
 package br.unc.chamados.services;
 
 import br.unc.chamados.domain.usuario.Usuario;
+import br.unc.chamados.dto.usuario.UserIdResponseDTO;
 import br.unc.chamados.dto.usuario.UserRequestDTO;
 import br.unc.chamados.repositories.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,11 @@ public class UsuarioService {
 
     public UserDetails getUser(String login){
         return this.userRepository.findByLogin(login);
+    }
+
+    public String getUserId(String login){
+        Usuario user = this.userRepository.findByLogin(login);
+        return user.getId();
     }
 
     public Usuario createUser(UserRequestDTO userDTO){
